@@ -1,0 +1,28 @@
+services:
+  ai-model-radar:
+    build: .
+    image: kimmingil/ai-model-radar:latest
+    container_name: ai_model_radar
+    restart: unless-stopped
+    init: true
+    user: "1026:100"
+    ports:
+      - "8500:8500"
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Seoul
+      - PYTHONUNBUFFERED=1
+      - PORT=8500
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

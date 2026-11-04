@@ -1,0 +1,11 @@
+.git
+.github
+.env
+__pycache__
+*.pyc
+.pytest_cache
+data
+logs
+tests
+README.md
+README.ko.md
